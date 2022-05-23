@@ -1,0 +1,5 @@
+# NPM build target
+npm/
+
+# Executables
+dupl*
