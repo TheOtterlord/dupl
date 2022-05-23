@@ -15,12 +15,14 @@ async function main(args: string[]) {
     ignore,
     gitignore = 'true',
     force,
+    verbose,
     _: [src, out],
   }: { [key: string]: string } = parse(args, {
     alias: {
       h: 'help',
       i: 'ignore',
       f: 'force',
+      v: 'verbose',
     },
   });
 
@@ -38,6 +40,7 @@ Flags:
   -i, --ignore: Ignore files/directories that match the given glob.
   --gitignore: Use the .gitignore file in the src directory. (default: true)
   -f, --force: Overwrite files/directories that already exist and ignore any prompts.
+  -v, --verbose: Show all files before prompt.
 `);
   }
 
@@ -58,7 +61,6 @@ Flags:
       ) {
         Deno.exit(0);
       }
-      await emptyDir(out);
       break;
     }
   }
@@ -84,9 +86,11 @@ Flags:
 
   const toCopy: string[][] = [];
 
+  if (verbose) console.log('Listing files to copy...')
   for await (const entry of walk(resolve(src), { skip: ignoreRegex })) {
     if (entry.isDirectory) continue;
     toCopy.push([entry.path, entry.name]);
+    if (verbose) console.log(`${entry.path} -> ${resolve(out, entry.name)}`)
   }
 
   console.log(`Copying ${toCopy.length} files from ${src} to ${out}`);
@@ -98,6 +102,8 @@ Flags:
   }
 
   const startTime = performance.now();
+
+  await emptyDir(out);
 
   let progress = 0;
   const copyStringLength = toCopy.length.toString().length;

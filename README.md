@@ -35,5 +35,6 @@ dupl . ../my_git_repo_2
 - `-h, --help` - Show the help message
 - `-i, --ignore` - Add additional globs to ignore
 - `--gitignore=true|false` - Ignore files in the .gitignore (default: true)
-- `-f, --force` Ignore any prompts, including warnings about overwriting
+- `-f, --force` - Ignore any prompts, including warnings about overwriting
   existing files/directories
+- `-v, --verbose` - Show all files before prompt.
