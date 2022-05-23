@@ -13,11 +13,11 @@ jobs:
         os: [ ubuntu-20.04, macos-11, windows-2019 ]
     steps:
       - name: Compile
-      - uses: actions/checkout@v3
-      - uses: denoland/setup-deno@v1.0.0
+        uses: actions/checkout@v3
+        uses: denoland/setup-deno@v1.0.0
         with:
           deno-version: v1.x # Run with latest stable Deno.
-      - run: deno compile --allow-read --allow-write --unstable mod.ts
+        run: deno compile --allow-read --allow-write --unstable mod.ts
 
       - name: Create Release
         id: create_release
