@@ -12,11 +12,15 @@ jobs:
       matrix:
         os: [ ubuntu-20.04, macos-11, windows-2019 ]
     steps:
-      - name: Compile
+      - name: Setup Checkout
         uses: actions/checkout@v3
+
+      - name: Setup Deno
         uses: denoland/setup-deno@v1.0.0
         with:
           deno-version: v1.x # Run with latest stable Deno.
+
+      - name: Compile
         run: deno compile --allow-read --allow-write --unstable mod.ts
 
       - name: Create Release
