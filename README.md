@@ -28,6 +28,8 @@ the directory. **Doing this will DELETE all files in the directory**.
 ```bash
 # backup the current directory (e.g. `my_git_repo`)
 dupl . ../my_git_repo_2
+# using `deno run`
+deno run --allow-read --allow-write --unstable https://raw.githubusercontent.com/TheOtterlord/dupl/main/mod.ts . ../my_git_repo_2
 ```
 
 ### Flags
