@@ -4,7 +4,7 @@ A simple, yet powerful tool for duplicating files. Think `cp`, but more epic.
 
 ## Install
 
-You can install the latest version using `deno install`.
+You can install dupl using `deno install` or by downloading the portable binaries from the [latest release](https://github.com/TheOtterlord/dupl/releases/latest) page. Binaries are provided for Linux, Windows, and MacOS.
 
 ```bash
 deno install --allow-read --allow-write --unstable --name dupl https://raw.githubusercontent.com/TheOtterlord/dupl/main/mod.ts
