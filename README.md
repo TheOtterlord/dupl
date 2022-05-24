@@ -10,6 +10,20 @@ You can install dupl using `deno install` or by downloading the portable binarie
 deno install --allow-read --allow-write --unstable --name dupl https://raw.githubusercontent.com/TheOtterlord/dupl/main/mod.ts
 ```
 
+You can also just run it using `deno run`.
+
+```bash
+deno run --allow-read --allow-write --unstable https://raw.githubusercontent.com/TheOtterlord/dupl/main/mod.ts . ../my_git_repo_2
+```
+
+Or add an alias to your terminal.
+
+```bash
+alias dupl='f(){ deno run --allow-read --allow-write --unstable https://raw.githubusercontent.com/TheOtterlord/dupl/main/mod.ts $@;  unset -f f; }; f'
+# To uninstall
+unalias dupl
+```
+
 ## Usage
 
 Use `--help` to read about the options.
